@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* AKMS meta.ai Premium Dark Luxury Design System */
+    /* Matte Black + Metallic Gold */
+
+    /* Primary Backgrounds - Rich Matte Charcoal (never pure black) */
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 94%; /* #F0F0F0 off-white */
+
+    /* Cards/Sections - Slightly Lighter Matte */
+    --card: 0 0% 14%; /* #242424 */
+    --card-foreground: 0 0% 94%;
+
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 94%;
+
+    /* Primary - Metallic Gold */
+    --primary: 44 73% 55%; /* #D4AF37 */
+    --primary-foreground: 0 0% 7%;
+
+    /* Secondary - Darker Matte */
+    --secondary: 0 0% 18%; /* #2E2E2E */
+    --secondary-foreground: 0 0% 94%;
+
+    /* Muted - Silver/Grey tones */
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 63%; /* #A0A0A0 Silver */
+
+    /* Accent - Bright Gold for highlights */
+    --accent: 40 92% 86%; /* #D4AF37 */
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders - Subtle gold tint */
+    --border: 43 20% 25%;
+    --input: 0 0% 18%;
+    --ring: 43 72% 52%;
+
+    --radius: 0.5rem;
+
+    /* Custom Premium Tokens */
+    --gold-primary: #D4AF37;
+    --gold-light: #FCF6BA;
+    --gold-dark: #B38728;
+    --gold-deep: #BF953F;
+
+    --gradient-gold: linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 60%, #FBF5B7 100%);
+    --gradient-gold-subtle: linear-gradient(135deg, #D4AF37 0%, #C5A028 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 7%) 0%, hsl(0 0% 10%) 100%);
+
+    --shadow-gold: 0 4px 20px -4px rgba(212, 175, 55, 0.25);
+    --shadow-gold-lg: 0 8px 40px -8px rgba(212, 175, 55, 0.35);
+    --shadow-dark: 0 4px 20px -4px rgba(0, 0, 0, 0.5);
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 94%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 0 0% 94%;
+    --sidebar-border: 43 20% 20%;
+    --sidebar-ring: 43 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Premium Gold Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  /* Gold shimmer effect for buttons */
+  .gold-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gold-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(252, 246, 186, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .gold-shimmer:hover::before {
+    left: 100%;
+  }
+
+  /* Premium card with gold border */
+  .card-premium {
+    @apply bg-card rounded-lg border border-border;
+    box-shadow: var(--shadow-dark);
+  }
+
+  .card-premium:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--shadow-gold);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Gold glow effect */
+  .gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .gold-glow:hover {
+    box-shadow: var(--shadow-gold-lg);
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gold border accent */
+  .border-gold {
+    border-color: var(--gold-primary);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
